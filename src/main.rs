@@ -7,11 +7,13 @@ use hyper::{
 use route_recognizer::Params;
 use router::Router;
 use std::sync::Arc;
+use warp::{Rejection};
 
 mod handler;
 mod router;
 
 type Response = hyper::Response<hyper::Body>;
+//type Result<T> = std::result::Result<T, Rejection>;
 type Error = Box<dyn std::error::Error + Send + Sync + 'static>;
 
 #[derive(Clone, Debug)]
@@ -22,11 +24,14 @@ pub struct AppState {
 #[tokio::main]
 async fn main() {
     let some_state = "state".to_string();
+    //let health_route = warp::path!("health").and_then(health_handler);
 
+    //let routes = health_route.with(warp::cors().allow_any_origin());
     let mut router: Router = Router::new();
     router.get("/test", Box::new(handler::test_handler));
     router.post("/send", Box::new(handler::send_handler));
     router.get("/params/:some_param", Box::new(handler::param_handler));
+ //   router.get("/health", Box::new(handler::health_handler));
 
     let shared_router = Arc::new(router);
     let new_service = make_service_fn(move |_| {

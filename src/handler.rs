@@ -1,6 +1,7 @@
 use crate::{Context, Response};
 use hyper::StatusCode;
 use serde::Deserialize;
+use warp::{Filter, Rejection, Reply};
 
 pub async fn test_handler(ctx: Context) -> String {
     format!("test called, state_thing was: {}", ctx.state.state_thing)
@@ -39,3 +40,11 @@ pub async fn param_handler(ctx: Context) -> String {
     };
     format!("param called, param was: {}", param)
 }
+
+pub async fn health_handler(ctx: Context) -> Response {
+    let body: SendRequest
+}
+
+//pub async fn health_handler(ctx: Context) -> Result<impl Reply> {
+//    Ok("OK")
+//}
