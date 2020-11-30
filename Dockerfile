@@ -8,7 +8,6 @@ RUN rm src/*.rs
 
 ADD . ./
 
-RUN rm ./target/release/deps/rust-minimal-web-example*
 RUN cargo build --release
 
 
