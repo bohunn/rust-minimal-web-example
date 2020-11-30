@@ -41,9 +41,9 @@ pub async fn param_handler(ctx: Context) -> String {
     format!("param called, param was: {}", param)
 }
 
-pub async fn health_handler(ctx: Context) -> Response {
-    let body: SendRequest
-}
+//pub async fn health_handler(ctx: Context) -> Response {
+//    let body: SendRequest
+//}
 
 //pub async fn health_handler(ctx: Context) -> Result<impl Reply> {
 //    Ok("OK")

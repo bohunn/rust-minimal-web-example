@@ -7,7 +7,6 @@ use hyper::{
 use route_recognizer::Params;
 use router::Router;
 use std::sync::Arc;
-use warp::{Rejection};
 
 mod handler;
 mod router;
